@@ -27,18 +27,18 @@ class RobotTest < MiniTest::Test
   end
 
   def test_can_turn_left()
-    robot01.turn_left
+    @robot01.turn_left
     assert_equal("W", @robot01.get_facing)
   end
 
   def test_can_turn_right()
-    robot02.turn_right
+    @robot02.turn_right
     assert_equal("N", @robot02.get_facing)
   end
 
   def test_can_move_forward()
-    robot01.move_forward()
-    robot02.move_forward()
+    @robot01.move_forward()
+    @robot02.move_forward()
     assert_equal(6, @robot01.get_y)
     assert_equal(9, @robot02.get_x)
   end
