@@ -18,4 +18,8 @@ class Computer
     @robots << new_robot
   end
 
+  def execute_robots_instructions()
+    @robots.each { |robot| robot.execute_instructions }
+  end
+
 end

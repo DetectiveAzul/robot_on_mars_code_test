@@ -16,4 +16,12 @@ class ComputerTest < MiniTest::Test
     @computer.send_robot([0,0], "N", "FFF")
     assert_equal([0,0], @computer.robots.first.get_coordinates)
   end
+
+  def test_send_and_execute_robots_instructions()
+    @computer.send_robot([0,0], "N", "FFF")
+    @computer.send_robot([1,0], "N", "FFF")
+    @computer.execute_robots_instructions
+    assert_equal([0,3], @computer.robots.first.get_coordinates)
+    assert_equal([1,3], @computer.robots.last.get_coordinates)
+  end
 end
