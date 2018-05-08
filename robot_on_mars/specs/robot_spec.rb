@@ -91,5 +91,13 @@ class RobotTest < MiniTest::Test
     assert_equal(true, new_robot.lost)
   end
 
+  def test_leave_scent_when_lost()
+    @robot01.set_instructions("lfff")
+    @robot01.execute_instructions(@grid)
+    assert_equal(1, @grid.scents.size)
+    assert_equal([0, 5], @grid.scents.first)
+  end
+
+
 
 end

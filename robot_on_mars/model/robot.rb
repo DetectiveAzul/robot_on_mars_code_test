@@ -39,14 +39,15 @@ class Robot
       check_exits_grid(grid)
       execute_instruction(instruction)
     end
-
   end
 
   def execute_instruction(instruction)
-    case(instruction.upcase)
-    when "F" then move_forward
-    when "L" then turn_left
-    when "R" then turn_right
+    if !@lost
+      case(instruction.upcase)
+        when "F" then move_forward
+        when "L" then turn_left
+        when "R" then turn_right
+      end
     end
   end
 
@@ -70,21 +71,20 @@ class Robot
 
   def move_forward()
     @last_seen = get_coordinates()
-    if !@lost
       case(@facing)
       when "N" then @coordinates[:y] += 1
       when "E" then @coordinates[:x] += 1
       when "S" then @coordinates[:y] -= 1
       when "W" then @coordinates[:x] -= 1
       end
-    end
   end
 
   def check_exits_grid(grid)
-    if get_x < 0 || get_x > grid.get_top_x
-      is_lost
-    elsif get_y < 0 || get_y > grid.get_top_y
-      is_lost
+    if get_x < 0 || get_x > grid.get_top_x || get_y < 0 || get_y > grid.get_top_y
+      if !lost
+        is_lost
+        grid.scents << last_seen
+      end 
     end
   end
 

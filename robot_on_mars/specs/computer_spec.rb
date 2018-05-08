@@ -25,11 +25,4 @@ class ComputerTest < MiniTest::Test
     assert_equal([1,3], @computer.robots.last.get_coordinates)
   end
 
-  def test_receive_scents_from_lost_robots()
-    @computer.send_robot([0,0], "N", "FFF")
-    @computer.robots.first.is_lost()
-    @computer.execute_robots_instructions
-    assert_equal(1, @computer.scents.size)
-    assert_equal([0,0], @computer.scents.first)
-  end
 end

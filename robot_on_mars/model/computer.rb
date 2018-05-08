@@ -2,11 +2,10 @@ require_relative('grid')
 require_relative('robot')
 
 class Computer
-  attr_accessor :grid, :robots, :scents
+  attr_accessor :grid, :robots
 
   def initialize()
     @robots = Array.new
-    @scents = Array.new
   end
 
   def create_grid(top_x, top_y)
@@ -22,7 +21,6 @@ class Computer
   def execute_robots_instructions()
     @robots.each do |robot|
       robot.execute_instructions(@grid)
-      @scents << robot.last_seen if robot.lost
     end
   end
 
