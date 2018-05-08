@@ -66,11 +66,13 @@ class Robot
 
   def move_forward()
     @last_seen = get_coordinates()
-    case(@facing)
-    when "N" then @coordinates[:y] += 1
-    when "E" then @coordinates[:x] += 1
-    when "S" then @coordinates[:y] -= 1
-    when "W" then @coordinates[:x] -= 1
+    if !@lost
+      case(@facing)
+      when "N" then @coordinates[:y] += 1
+      when "E" then @coordinates[:x] += 1
+      when "S" then @coordinates[:y] -= 1
+      when "W" then @coordinates[:x] -= 1
+      end
     end
   end
 

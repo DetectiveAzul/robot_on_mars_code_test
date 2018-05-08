@@ -74,6 +74,12 @@ class RobotTest < MiniTest::Test
   def test_robot_can_be_lost()
     @robot01.is_lost()
     assert_equal(true, @robot01.lost)
+  end
+
+  def test_robot_stops_working_if_lost()
+    @robot01.is_lost()
+    @robot01.execute_instruction("f")
+    assert_equal([0,5], @robot01.get_coordinates)
   end 
 
 end
