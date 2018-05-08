@@ -98,6 +98,17 @@ class RobotTest < MiniTest::Test
     assert_equal([0, 5], @grid.scents.first)
   end
 
+  def test_ignore_action_if_scent()
+    @robot01.set_instructions("lfff")
+    @grid.scents << [0,5]
+    assert_equal([0, 5], @robot01.get_coordinates)
+    assert_equal(false, @robot01.lost)
+  end
 
+  def test_can_get_output()
+    assert_equal("0 5 N", @robot01.get_output)
+    @robot01.is_lost
+    assert_equal("0 5 N LOST", @robot01.get_output)
+  end
 
 end

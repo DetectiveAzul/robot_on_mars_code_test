@@ -30,14 +30,19 @@ class Robot
     return coordinates
   end
 
+  def set_coordinates(coordinates)
+    @coordinates[:x] = coordinates[0]
+    @coordinates[:y] = coordinates[1]
+  end
+
   def set_instructions(instructions)
     @instructions = instructions.split('')
   end
 
   def execute_instructions(grid)
     @instructions.each do |instruction|
-      check_exits_grid(grid)
       execute_instruction(instruction)
+      check_exits_grid(grid)
     end
   end
 
@@ -81,16 +86,26 @@ class Robot
 
   def check_exits_grid(grid)
     if get_x < 0 || get_x > grid.get_top_x || get_y < 0 || get_y > grid.get_top_y
-      if !lost
+      if !lost && !grid.scents.include?(get_coordinates)
         is_lost
         grid.scents << last_seen
-      end 
+      elsif !lost && grid.scents.include?(get_coordinates)
+        reset_position()
+      end
     end
   end
 
-
   def is_lost()
     @lost = true;
+  end
+
+  def reset_position()
+    set_coordinates[@last_seen]
+  end
+
+  def get_output()
+    return "#{@coordinates[:x]} #{@coordinates[:y]} #{@facing}" if !lost
+    return "#{@last_seen[0]} #{@last_seen[1]} #{@facing} LOST"
   end
 
 end
