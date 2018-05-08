@@ -62,4 +62,8 @@ class RobotTest < MiniTest::Test
     assert_equal(1, @robot01.get_x)
   end
 
+  def test_robot_is_not_lost()
+    assert_false(@robot01.lost)
+  end
+
 end

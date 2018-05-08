@@ -1,5 +1,5 @@
 class Computer
-  attr_accessor :grid :robots
+  attr_accessor :grid, :robots, :output
 
   def initialize()
   end
@@ -11,7 +11,7 @@ class Computer
   def send_robot(coordinates, facing, instructions)
     new_robot = Robot.new(coordinates, facing)
     new_robot.set_instructions(instructions)
+    @robots << new_robot
   end
-
 
 end

@@ -1,5 +1,5 @@
 class Robot
-  attr_accessor :instructions
+  attr_accessor :instructions, :lost
   def initialize(coordinates, facing)
     @coordinates = {
       x: coordinates[0],
@@ -7,6 +7,7 @@ class Robot
     }
 
     @facing = facing
+    @lost = false
   end
 
   def get_x()
