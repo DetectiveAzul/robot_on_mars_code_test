@@ -22,22 +22,22 @@ class Computer
   def execute_robots_instructions()
     @robots.each do |robot|
       robot.execute_instructions(@grid)
-      @output << robot.get_output
+      @outputs << robot.get_output
     end
   end
 
   def get_user_input()
     user_input = gets.chomp
-    user_input = user.input.split(" ")
+    user_input = user_input.split(" ")
   end
 
   def get_user_input_for_grid()
     user_input = get_user_input()
-    create_grid(user_input[0], user_input[1])
+    create_grid(user_input[0].to_i, user_input[1].to_i)
   end
 
   def get_user_input_for_robot()
     user_input = get_user_input()
-    send_robot([user_input[0], user_input[1]], user_input[2], user_input[3])
+    send_robot([user_input[0].to_i, user_input[1].to_i], user_input[2], user_input[3])
   end
 end

@@ -86,11 +86,11 @@ class Robot
 
   def check_exits_grid(grid)
     if get_x < 0 || get_x > grid.get_top_x || get_y < 0 || get_y > grid.get_top_y
-      if !lost && !grid.scents.include?(get_coordinates)
+      if !lost && !grid.scents.include?(@last_seen)
         is_lost
         grid.scents << last_seen
-      elsif !lost && grid.scents.include?(get_coordinates)
-        reset_position()
+      elsif !lost && grid.scents.include?(@last_seen)
+        set_coordinates(@last_seen)
       end
     end
   end
@@ -99,9 +99,6 @@ class Robot
     @lost = true;
   end
 
-  def reset_position()
-    set_coordinates[@last_seen]
-  end
 
   def get_output()
     return "#{@coordinates[:x]} #{@coordinates[:y]} #{@facing}" if !lost
