@@ -21,7 +21,7 @@ class Computer
 
   def execute_robots_instructions()
     @robots.each do |robot|
-      robot.execute_instructions
+      robot.execute_instructions(@grid)
       @scents << robot.last_seen if robot.lost
     end
   end

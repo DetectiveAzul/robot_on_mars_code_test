@@ -34,8 +34,12 @@ class Robot
     @instructions = instructions.split('')
   end
 
-  def execute_instructions()
-    @instructions.each { |instruction| execute_instruction(instruction)}
+  def execute_instructions(grid)
+    @instructions.each do |instruction|
+      check_exits_grid(grid)
+      execute_instruction(instruction)
+    end
+
   end
 
   def execute_instruction(instruction)
@@ -75,6 +79,15 @@ class Robot
       end
     end
   end
+
+  def check_exits_grid(grid)
+    if get_x < 0 || get_x > grid.get_top_x
+      is_lost
+    elsif get_y < 0 || get_y > grid.get_top_y
+      is_lost
+    end
+  end
+
 
   def is_lost()
     @lost = true;

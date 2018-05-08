@@ -1,11 +1,13 @@
 require('minitest/autorun')
 require('minitest/rg')
 require_relative('../model/robot')
+require_relative('../model/grid')
 
 class RobotTest < MiniTest::Test
   def setup()
     @robot01 = Robot.new([0,5], "N")
     @robot02 = Robot.new([10,15], "W")
+    @grid = Grid.new(50, 50)
   end
 
   def test_has_x_coordinate()
@@ -57,7 +59,7 @@ class RobotTest < MiniTest::Test
 
   def test_can_set_and_run_instructions()
     @robot01.set_instructions("FRF")
-    @robot01.execute_instructions
+    @robot01.execute_instructions(@grid)
     assert_equal(6, @robot01.get_y)
     assert_equal(1, @robot01.get_x)
   end
@@ -80,6 +82,14 @@ class RobotTest < MiniTest::Test
     @robot01.is_lost()
     @robot01.execute_instruction("f")
     assert_equal([0,5], @robot01.get_coordinates)
-  end 
+  end
+
+  def test_robot_exits_grid()
+    new_robot = Robot.new([50, 50], "N")
+    new_robot.set_instructions("fff")
+    new_robot.execute_instructions(@grid)
+    assert_equal(true, new_robot.lost)
+  end
+
 
 end
