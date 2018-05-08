@@ -43,4 +43,8 @@ class RobotTest < MiniTest::Test
     assert_equal(9, @robot02.get_x)
   end
 
+  def test_has_instructions()
+    assert_nil(@robot01.instructions)
+  end
+
 end

@@ -1,4 +1,5 @@
 class Robot
+  attr_accessor :instructions
   def initialize(coordinates, facing)
     @coordinates = {
       x: coordinates[0],
