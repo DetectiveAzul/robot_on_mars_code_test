@@ -1,2 +1,18 @@
 class Grid
-end 
+  attr_accessor :robots, :scents
+  def initialize(top_x, top_y)
+    @top_x = top_x
+    @top_y = top_y
+    @robots = Array.new()
+    @scents = Array.new()
+  end
+
+  def get_top_x
+    return @top_x
+  end
+
+  def get_top_y
+    return @top_y
+  end
+  
+end
