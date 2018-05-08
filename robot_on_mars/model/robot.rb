@@ -27,6 +27,14 @@ class Robot
     return coordinates
   end
 
+  def set_instructions(instructions)
+    @instructions = instructions.split('')
+  end
+
+  def execute_instructions()
+    @instructions.each { |instruction| execute_instruction(instruction)}
+  end
+
   def execute_instruction(instruction)
     case(instruction.upcase)
     when "F" then move_forward

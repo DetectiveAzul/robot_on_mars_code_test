@@ -13,5 +13,5 @@ class Computer
     new_robot.set_instructions(instructions)
   end
 
-  
+
 end

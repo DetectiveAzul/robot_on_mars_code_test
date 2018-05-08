@@ -55,4 +55,11 @@ class RobotTest < MiniTest::Test
     assert_equal(1, @robot01.get_x)
   end
 
+  def test_can_set_and_run_instructions()
+    @robot01.set_instructions("FRF")
+    @robot01.execute_instructions
+    assert_equal(6, @robot01.get_y)
+    assert_equal(1, @robot01.get_x)
+  end
+
 end
