@@ -3,7 +3,6 @@ class Grid
   def initialize(top_x, top_y)
     @top_x = top_x
     @top_y = top_y
-    @scents = Array.new()
   end
 
   def get_top_x

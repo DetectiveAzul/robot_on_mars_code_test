@@ -16,8 +16,4 @@ class GridTest < MiniTest::Test
     assert_equal(20, @mars.get_top_y)
   end
 
-  def test_has_scent_array()
-    assert_equal(0, @mars.scents.size)
-  end
-
 end
