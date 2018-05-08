@@ -1,7 +1,11 @@
+require_relative('grid')
+require_relative('robot')
+
 class Computer
   attr_accessor :grid, :robots, :output
 
   def initialize()
+    @robots = Array.new
   end
 
   def create_grid(top_x, top_y)
