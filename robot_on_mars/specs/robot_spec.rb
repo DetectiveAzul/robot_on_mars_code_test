@@ -47,4 +47,12 @@ class RobotTest < MiniTest::Test
     assert_nil(@robot01.instructions)
   end
 
+  def test_can_execute_instruction()
+    @robot01.execute_instruction("f")
+    @robot01.execute_instruction("R")
+    @robot01.execute_instruction("F")
+    assert_equal(6, @robot01.get_y)
+    assert_equal(1, @robot01.get_x)
+  end
+
 end

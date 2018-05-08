@@ -27,6 +27,14 @@ class Robot
     return coordinates
   end
 
+  def execute_instruction(instruction)
+    case(instruction.upcase)
+    when "F" then move_forward
+    when "L" then turn_left
+    when "R" then turn_right
+    end
+  end
+
   def turn_left()
     case(@facing)
     when "N" then @facing = "W"
@@ -53,6 +61,5 @@ class Robot
     when "W" then @coordinates[:x] -= 1
     end
   end
-
 
 end
