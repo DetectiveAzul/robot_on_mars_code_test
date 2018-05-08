@@ -63,7 +63,17 @@ class RobotTest < MiniTest::Test
   end
 
   def test_robot_is_not_lost()
-    assert_false(@robot01.lost)
+    assert_equal(false, @robot01.lost)
   end
+
+  def test_robot_has_last_seen()
+    @robot01.execute_instruction("f")
+    assert_equal([0,5], @robot01.last_seen)
+  end
+
+  def test_robot_can_be_lost()
+    @robot01.is_lost()
+    assert_equal(true, @robot01.lost)
+  end 
 
 end

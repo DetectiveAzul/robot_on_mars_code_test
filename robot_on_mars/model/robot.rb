@@ -1,5 +1,6 @@
 class Robot
-  attr_accessor :instructions, :lost
+  attr_accessor :instructions, :last_seen
+  attr_reader :lost
   def initialize(coordinates, facing)
     @coordinates = {
       x: coordinates[0],
@@ -7,6 +8,7 @@ class Robot
     }
 
     @facing = facing
+    @last_seen = get_coordinates
     @lost = false
   end
 
@@ -63,12 +65,17 @@ class Robot
   end
 
   def move_forward()
+    @last_seen = get_coordinates()
     case(@facing)
     when "N" then @coordinates[:y] += 1
     when "E" then @coordinates[:x] += 1
     when "S" then @coordinates[:y] -= 1
     when "W" then @coordinates[:x] -= 1
     end
+  end
+
+  def is_lost()
+    @lost = true;
   end
 
 end

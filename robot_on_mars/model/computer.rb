@@ -19,7 +19,9 @@ class Computer
   end
 
   def execute_robots_instructions()
-    @robots.each { |robot| robot.execute_instructions }
+    @robots.each do |robot|
+      robot.execute_instructions 
+    end
   end
 
 end
