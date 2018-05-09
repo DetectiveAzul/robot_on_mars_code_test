@@ -28,7 +28,8 @@ while(not_enough_robots)
 end
 
 computer.execute_robots_instructions
+puts ""
+puts "----------------------------------------"
 computer.outputs.each do |output|
   puts output
-  puts ""
 end
